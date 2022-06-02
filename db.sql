@@ -3,7 +3,7 @@ CREATE table User
     userId   INTEGER not null
         primary key autoincrement,
     userName text(50),
-    password text(100)
+    token text(25)
 );
 
 CREATE table Games
