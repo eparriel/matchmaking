@@ -1,22 +1,18 @@
+import json
+
+
 class Request:
     type = ""
 
     def __init__(self, request):
-        self.request = request
-
-    def requestType(self):
-
-        if "type: action" in self.request:
+        self.request = json.loads(request)
+        if self.request["header"]["type"] == "action":
             self.type = "action"
-        elif "type: SignUp" in self.request:
-            self.type = "SignUp"
-        elif "type: authenticate" in self.request:
-            self.type = "authenticate"
-        elif "type: gameinfo" in self.request:
-            self.type = "gameinfo"
-        elif "type: statistique" in self.request:
+        elif self.request["header"]["type"] == "gameInfo":
+            self.type = "gameInfo"
+        elif self.request["header"]["type"] == "statistique":
             self.type = "statistique"
-        elif "type: inQueue" in self.request:
+        elif self.request["header"]["type"] == "inQueue":
             self.type = "inQueue"
         else:
             self.type = "none"
@@ -26,7 +22,7 @@ class Request:
     def getRequestBody(self):
         return
 
-    def getRequestType(self):
-        return self.request
+    def getRequest(self):
+        return json.dumps(self.request)
 
 
