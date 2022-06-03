@@ -8,7 +8,7 @@ import request
 class Network:
     def __init__(self):
         self.client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        self.server = "192.168.1.14"
+        self.server = "127.0.0.1"
         self.port = 5555
         self.addr = (self.server, self.port)
         self.status = self.connect()
@@ -85,7 +85,7 @@ if __name__ == '__main__':
             n.send(n.signout().getRequest())
             n.client.close()
             break
-        if toSend == "inQueue":
+        if toSend == "1":
             print("trying to join the queue")
             while True:
                 response = json.loads(
@@ -94,4 +94,3 @@ if __name__ == '__main__':
                 )
                 print("You are in the queue at the :", response["body"]["position"], "position")
                 time.sleep(1)
-

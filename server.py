@@ -7,7 +7,7 @@ import json
 import request
 import random
 
-server = "192.168.1.14"
+server = "127.0.0.1"
 port = 5555
 
 ONLINE_USERS = []
@@ -142,7 +142,6 @@ def threaded_client(conn, addr, db, cur):
 
 if __name__ == '__main__':
     # connect to database
-
     db = sqlite3.connect('db.sqlite')
     cur = db.cursor()
 
